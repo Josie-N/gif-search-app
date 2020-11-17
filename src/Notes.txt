@@ -1,0 +1,9 @@
+// axios.get(url[, config])
+// axios.get() and axios.post()
+// The get() method requires two parameters to be supplied to it. 
+// First, it needs the URI of the service endpoint. 
+// Second, it should be passed an object that contains the properties we want to send to our server.
+
+// Once an HTTP request is made, Axios returns a promise that is either fulfilled or rejected, 
+// depending on the response from the backend service.
+// If the promise is fulfilled, the first argument of then() will be called; if the promise is rejected, the second argument will be called. 
