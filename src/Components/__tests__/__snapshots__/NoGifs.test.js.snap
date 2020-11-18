@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoGifs component when it loads renders component 1`] = `
+<li
+  class="no-gifs"
+>
+  <i
+    class="material-icons icon-gif"
+  >
+    sentiment_very_dissatisfied
+  </i>
+  <h3>
+    Sorry, no GIFs match your search.
+  </h3>
+</li>
+`;
