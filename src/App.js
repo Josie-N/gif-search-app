@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+
 import "./App.css";
 import axios from "axios";
 import SearchForm from "./Components/SearchForm";
@@ -23,65 +24,51 @@ const makeGifCall = (url, query, successCb) => {
     });
 };
 
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      gifs: [],
-      loading: true,
-    };
-  }
+const App = () => {
+  const [isLoading, changeLoadingStatus] = useState(true);
+  const [gifs, setGifsData] = useState([]);
 
-  //  componentDidMount() is called once, immediately AFTER a component is mounted on the DOM
-  // The fetch() method takes one mandatory argument, the path to the resource you want to fetch.
-
-  componentDidMount() {
-    this.performSearch();
-  }
-
-  handleHeaderClick = () => {
+  const handleHeaderClick = () => {
     const url = "https://api.giphy.com/v1/gifs/trending";
     const successCb = (data) => {
-      this.setState({
-        gifs: data,
-        loading: false,
-      });
+      setGifsData(data);
+      changeLoadingStatus(false);
     };
     makeGifCall(url, "", successCb);
   };
 
-  performSearch = (query = "cats") => {
+  const performSearch = (query = "cats") => {
     const url = "https://api.giphy.com/v1/gifs/search";
     const successCb = (data) => {
-      this.setState({
-        gifs: data,
-        loading: false,
-      });
+      setGifsData(data);
+      changeLoadingStatus(false);
     };
     makeGifCall(url, query, successCb);
   };
 
-  render() {
-    const { loading, gifs } = this.state;
+  useEffect(() => {
+    performSearch();
+  }, []);
 
-    return (
-      <div>
-        <div className="main-header">
-          <div className="inner">
-            <h1
-              style={{ cursor: "pointer" }}
-              className="main-title"
-              onClick={this.handleHeaderClick}
-            >
-              GifSearch
-            </h1>
-            <SearchForm onSearch={this.performSearch} />
-          </div>
-        </div>
-        <div className="main-content">
-          {loading ? <p>Loading...</p> : <GifList data={gifs} />}
+  return (
+    <div>
+      <div className="main-header">
+        <div className="inner">
+          <h1
+            style={{ cursor: "pointer" }}
+            className="main-title"
+            onClick={handleHeaderClick}
+          >
+            GifSearch
+          </h1>
+          <SearchForm onSearch={performSearch} />
         </div>
       </div>
-    );
-  }
-}
+      <div className="main-content">
+        {isLoading ? <p>Loading...</p> : <GifList data={gifs} />}
+      </div>
+    </div>
+  );
+};
+
+export default App;
