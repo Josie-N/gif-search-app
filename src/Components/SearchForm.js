@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const SearchForm = ({ onSearch }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState({});
 
   const onSearchChange = (e) => {
     setSearchQuery({ searchQuery: e.target.value });

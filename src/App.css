@@ -7,9 +7,9 @@
 }
 
 body {
-  font: 1em/1.5 'Roboto', sans-serif;
+  font: 1em/1.5 "Roboto", sans-serif;
   color: #4c4c4c;
-  background: #f6f7f7;
+  background: #212530;
   padding-top: 145px;
   padding-bottom: 3em;
   margin: 0;
@@ -35,14 +35,31 @@ input {
   border: none;
   outline: 0;
   border-bottom: 4px solid #e4e4e4;
-  transition: border-color .4s;
+  transition: border-color 0.4s;
 }
 
 input:focus {
   border-color: #c1c1c1;
 }
 
-button {
+.button-pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 0;
+}
+
+.button-pagination {
+  font-weight: 700;
+  padding: 8px 28px;
+  border: none;
+  margin-right: 16px;
+  background-color: #fff;
+  color: #275efe;
+  border-radius: 30px;
+  letter-spacing: 0.3px;
+}
+
+/* button {
   width: 40px;
   height: 35px;
   border: 0;
@@ -51,7 +68,7 @@ button {
   outline: 0;
   position: relative;
   z-index: 2000;
-}
+} */
 
 /* ================================= 
   Page Components
@@ -63,6 +80,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
+  color: #5b6686;
 }
 
 .search-form input:only-of-type {
@@ -74,6 +92,14 @@ button {
 .search-button {
   float: right;
   margin-right: -10px;
+  width: 40px;
+  height: 35px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  outline: 0;
+  position: relative;
+  z-index: 2000;
 }
 
 .icn-search {
@@ -87,7 +113,7 @@ button {
   display: block;
 }
 
-.no-gifs  {
+.no-gifs {
   color: #7bcbc4;
   height: 140px;
   padding-top: 62px;
@@ -102,7 +128,7 @@ button {
 
 .gif-wrap {
   background-color: #fff;
-  margin-bottom: .8em;
+  margin-bottom: 0.8em;
   position: relative;
 }
 
@@ -126,7 +152,7 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  background: #fff;
+  background: #212530;
   min-height: 80px;
   z-index: 1000;
 }
@@ -198,8 +224,8 @@ button {
   }
 }
 
-@media (min-width: 769px) { 
-  .gif-list li:nth-of-type(3n+1) {
+@media (min-width: 769px) {
+  .gif-list li:nth-of-type(3n + 1) {
     clear: left;
   }
 }
